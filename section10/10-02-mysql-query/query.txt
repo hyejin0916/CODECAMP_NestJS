@@ -1,0 +1,40 @@
+show databases;
+
+use myproject;
+
+show tables;
+
+desc product;
+
+select * from product;
+
+insert into product(id, name, description, price) values(uuid(), '마우스', '정말 좋은 마우스입니다.', 15000);
+insert into product(id, name, description, price) values(uuid(), '노트북', '최신 맥북', 20000);
+insert into product(id, name, description, price) values(uuid(), '셔츠', '깔끔한 셔', 30000);
+DELETE from product WHERE name = '셔츠';
+
+update product set price = 18000 where name = '마우스';
+
+#========================조인==============================
+
+SELECT * FROM product_saleslocation;
+INSERT INTO product_saleslocation(id, address, addressDetail, lat, lng, meetingTime)
+							value(uuid(), "구로구", "구로디지털단지", 37.281753, 127.192387, '2023-01-10');
+							
+update product set productSaleslocationID = 'daeb6552-edfe-11ed-b50a-76e20c92b8e4' where name = '마우스';
+
+SELECT p.id, p.name, p.price, ps.address, ps.addressDetail  as '상세주소'
+FROM product p, product_saleslocation ps
+WHERE p.productSaleslocationId = ps.id ;
+
+#===========================추가기능==============================
+UPDATE product SET isSoldput = true WHERE name = '노트북' and price = 20000;
+UPDATE product SET isSoldput = true WHERE name = '노트북' or price = 20000;
+
+
+#===========================주석 쉽게 다는 방법=============================
+SELECT * FROM product 
+WHERE 1 = 1 # 무조건 참인경우를 WHERE 절로 추가
+and name = '마우스' 
+and price = 5000 
+and isSoldput = FALSE ;
