@@ -4,7 +4,7 @@ import { CreateProductInput } from './create-product.input';
 @InputType()
 export class UpdateProductInput extends PartialType(CreateProductInput) {
   // Partial: 속성을 선택사항으로
-  // 아래내용들을 상속받음
+  // 아래 내용들을 상속받음
   // name?: string;
   // description?: string;
   // price?: number;

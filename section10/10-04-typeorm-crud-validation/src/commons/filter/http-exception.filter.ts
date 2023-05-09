@@ -1,6 +1,6 @@
 import { Catch, ExceptionFilter, HttpException } from '@nestjs/common';
 
-@Catch(HttpException) // HttpException관련 에러가나면 해당 클래스 실행
+@Catch(HttpException) // HttpException관련 에러가 나면 해당 클래스 실행
 export class HttpExceptionFilter implements ExceptionFilter {
   catch(exception: HttpException) {
     const status = exception.getStatus();
@@ -14,4 +14,4 @@ export class HttpExceptionFilter implements ExceptionFilter {
   }
 }
 
-// implements: 타입을 만들어라고 강제해주는것
+// implements: 타입을 만들어라고 강제해주는 것

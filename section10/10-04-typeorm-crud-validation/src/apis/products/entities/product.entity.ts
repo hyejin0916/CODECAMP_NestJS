@@ -37,12 +37,12 @@ export class Product {
   @Field(() => Boolean)
   isSoldout: boolean;
 
-  @JoinColumn() // onetoone일때, 주체가 되는 모델에 작성
+  @JoinColumn() // OnetoOne일때, 주체가 되는 모델에 작성
   @OneToOne(() => ProductSaleslocation)
   @Field(() => ProductSaleslocation)
   productSaleslocation: ProductSaleslocation;
 
-  @ManyToOne(() => ProductCategory) // 앞의 many가 현재 모델, 뒤의 one이 연결될 모델
+  @ManyToOne(() => ProductCategory) // 앞의 Many가 현재 모델, 뒤의 One이 연결될 모델
   @Field(() => ProductCategory)
   productCategory: ProductCategory;
 

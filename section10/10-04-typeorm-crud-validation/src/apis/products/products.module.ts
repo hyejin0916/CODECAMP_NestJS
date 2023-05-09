@@ -9,7 +9,7 @@ import { Product } from './entities/product.entity';
     TypeOrmModule.forFeature([
       Product, //
     ]),
-  ], // 모델에 데이터 저장하기위해 의존성 주입
+  ], // 모델에 데이터 저장하기 위해 의존성 주입
   providers: [
     ProductsResolver, //
     ProductsService,

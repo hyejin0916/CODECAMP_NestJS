@@ -25,7 +25,7 @@ export class ProductsResolver {
     // 브라우저에 결과를 보내주는 2가지 방법
     // 1. 등록된 내용이 담긴 객체를 그대로 브라우저에 돌려보내주기
     return this.productsService.create({ createProductInput });
-    // 2. 결과메세지만 간단히 보내주기
+    // 2. 결과 메세지만 간단히 보내주기
     // return '정상적으로 상품이 등록되었습니다.'
   }
 

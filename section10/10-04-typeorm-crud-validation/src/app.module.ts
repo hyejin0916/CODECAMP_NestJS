@@ -27,6 +27,6 @@ import { ProductsModule } from './apis/products/products.module';
       synchronize: true, // entity의 내용과 테이블 내용을 동기화시키는 것
       logging: true,
     }),
-  ], //module을 합치는 것
+  ], // module을 합치는 것
 })
 export class AppModule {}
