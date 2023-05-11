@@ -40,14 +40,14 @@ export class ProductsService {
 
   findAll(): Promise<Product[]> {
     return this.productsRepository.find({
-      relations: ['productSaleslocation'],
+      relations: ['productSaleslocation', 'productCategory'],
     });
   }
 
   findOne({ productId }: IProductsServiceFindOne): Promise<Product> {
     return this.productsRepository.findOne({
       where: { id: productId },
-      relations: ['productSaleslocation'],
+      relations: ['productSaleslocation', 'productCategory'],
     });
   }
 
@@ -62,7 +62,8 @@ export class ProductsService {
     // });
 
     // 2. 상품과 상품거래위치를 같이 등록하는 방법
-    const { productSaleslocation, ...product } = createProductInput;
+    const { productSaleslocation, productCategoryId, ...product } =
+      createProductInput;
     const result = await this.productsSaleslocationsService.create({
       productSaleslocation,
     }); // 서비스를 타고 가야하는 이유는 ?
@@ -71,6 +72,9 @@ export class ProductsService {
     const result2 = this.productsRepository.save({
       ...product,
       productSaleslocation: result, // result 통째로 넣기 vs. 아이디만 빼서 넣기
+      productCategory: {
+        id: productCategoryId,
+      },
     });
 
     return result2;
