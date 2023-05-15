@@ -1,8 +1,8 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { Product } from './entities/product.entity';
-import { UpdateProductInput } from './dto/update-product.input';
 import { ProductsService } from './products.service';
 import { CreateProductInput } from './dto/create-product.input';
+import { Product } from './entities/product.entity';
+import { UpdateProductInput } from './dto/update-product.input';
 
 @Resolver()
 export class ProductsResolver {
@@ -40,7 +40,7 @@ export class ProductsResolver {
   updateProduct(
     @Args('productId') productId: string,
     @Args('updateProductInput') updateProductInput: UpdateProductInput,
-  ): Promise<Product> {
+  ): Promise<void> {
     return this.productsService.update({ productId, updateProductInput });
   }
 

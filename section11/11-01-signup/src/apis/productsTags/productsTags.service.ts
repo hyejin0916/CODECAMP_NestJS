@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
+import { In, Repository } from 'typeorm';
 import { ProductTag } from './entities/productTag.entity';
-import { In, InsertResult, Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
 import {
   IProductsTagsServiceBulkInsert,
-  IProductsTagsServiceFindByName,
+  IProductsTagsServiceFindByNames,
 } from './interfaces/products-tags-service.interface';
 
 @Injectable()
@@ -14,15 +14,13 @@ export class ProductsTagsService {
     private readonly productsTagsRepository: Repository<ProductTag>,
   ) {}
 
-  findByNames({
-    tagNames,
-  }: IProductsTagsServiceFindByName): Promise<ProductTag[]> {
+  findByNames({ tagNames }: IProductsTagsServiceFindByNames) {
     return this.productsTagsRepository.find({
-      where: { name: In([...tagNames]) },
+      where: { name: In(tagNames) },
     });
   }
 
-  bulkInsert({ names }: IProductsTagsServiceBulkInsert): Promise<InsertResult> {
-    return this.productsTagsRepository.insert([...names]);
+  bulkInsert({ names }: IProductsTagsServiceBulkInsert) {
+    return this.productsTagsRepository.insert(names);
   }
 }

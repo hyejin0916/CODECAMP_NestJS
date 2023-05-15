@@ -36,8 +36,9 @@ type ProductTag {
 
 type User {
   id: String!
+  email: String!
   name: String!
-  eamil: String!
+  age: Int!
 }
 
 type Product {
@@ -64,6 +65,7 @@ type Mutation {
   updateProduct(productId: String!, updateProductInput: UpdateProductInput!): Product!
   deleteProduct(productID: String!): Boolean!
   createProductCategory(name: String!): ProductCategory!
+  createUser(email: String!, password: String!, name: String!, age: Int!): User!
 }
 
 input CreateBoardInput {
@@ -78,6 +80,7 @@ input CreateProductInput {
   price: Int!
   productSaleslocation: ProductSaleslocationInput!
   productCategoryId: String!
+  productTags: [String!]!
 }
 
 input ProductSaleslocationInput {
@@ -94,4 +97,5 @@ input UpdateProductInput {
   price: Int
   productSaleslocation: ProductSaleslocationInput
   productCategoryId: String
+  productTags: [String!]
 }

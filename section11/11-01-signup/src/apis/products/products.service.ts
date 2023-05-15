@@ -5,7 +5,7 @@ import {
   UnprocessableEntityException,
 } from '@nestjs/common';
 // import { CreateProductInput } from './dto/create-product.input';
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 import { Product } from './entities/product.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import {
@@ -74,16 +74,21 @@ export class ProductsService {
     //  // 레파지토리에 직접 접근하면 검증 로직을 통일시킬 수 없음
 
     // 2-2. 상품태그 등록
+    // productTags가 ['#전자제품', '#영등포', '#컴퓨터']와 같은 패턴이라고 가정
+    // 입력된 태그
     const tagNames = productTags.map((el) => el.replace('#', ''));
-    const prevTags = await this.productsTagsService.findByNames({ tagNames });
+
+    // 기존에 존재하는 태그
+    const prevTags = await this.productsTagsService.findByNames({ tagNames }); // 전자제품
 
     const temp = [];
+    // 입력된 태그 중에 기존에 있던 태그를 빼는 작업
     tagNames.forEach((el) => {
-      const exists = prevTags.find((prevEl) => el === prevEl.name);
-      if (!exists) temp.push({ name: el });
+      const isExists = prevTags.find((prevEl) => el === prevEl.name);
+      if (!isExists) temp.push({ name: el }); // temp = [{name: "영등포"}, {name: "컴퓨터"}]
     });
-    const newTags = await this.productsTagsService.bulkInsert({ names: temp });
 
+    const newTags = await this.productsTagsService.bulkInsert({ names: temp }); // bulk-insert는 save()로 불가능
     const tags = [...prevTags, ...newTags.identifiers];
 
     const result2 = this.productsRepository.save({
@@ -92,7 +97,7 @@ export class ProductsService {
       productCategory: {
         id: productCategoryId,
       },
-      productTags: tags,
+      productTags: tags, // 등록된 id만 배열형태로 존재
     });
 
     return result2;
@@ -101,7 +106,7 @@ export class ProductsService {
   async update({
     productId,
     updateProductInput,
-  }: IProductsServiceUpdate): Promise<Product> {
+  }: IProductsServiceUpdate): Promise<void> {
     // 기존 있는 내용을 재사용하여, 로직을 통일하자 !
     const product = await this.findOne({ productId });
 
@@ -117,19 +122,19 @@ export class ProductsService {
     // this.productsRepository.insert; => 결과를 객체로 못 돌려받는 등록 방법
     // this.productsRepository.update; => 결과를 객체로 못 돌려받는 수정 방법
 
-    const result = this.productsRepository.save({
-      // result에 기존 데이터 isSoldout 없음
-      // update, create 다 됨
+    //   const result = this.productsRepository.save({
+    //     // result에 기존 데이터 isSoldout 없음
+    //     // update, create 다 됨
 
-      ...product,
-      ...updateProductInput,
-      // id: productId,
-      // isSoldout: product.isSoldout, // 이렇게 넣어주면 수정된 값아니라도 수정된 내용으로 보내줄 수 있음
-      // name: updateProductInput.name,
-      // price: updateProductInput.price,
-      // description: updateProductInput.description,
-    });
-    return result;
+    //     ...product,
+    //     ...updateProductInput,
+    //     // id: productId,
+    //     // isSoldout: product.isSoldout, // 이렇게 넣어주면 수정된 값아니라도 수정된 내용으로 보내줄 수 있음
+    //     // name: updateProductInput.name,
+    //     // price: updateProductInput.price,
+    //     // description: updateProductInput.description,
+    //   });
+    //   return result;
   }
   // checkSoldout을 함수로 만드는 이유 => 수정시, 삭제시 등 같은 검증 로직 사용
   checkSoldoout({ product }: IProductsServiceCheckSoldout): void {

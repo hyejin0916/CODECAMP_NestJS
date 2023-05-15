@@ -3,8 +3,9 @@ import { BoardsModule } from './apis/boards/boards.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ProductsCategoriesModule } from './apis/productsCategories/productsCategories.module';
 import { ProductsModule } from './apis/products/products.module';
+import { ProductsCategoriesModule } from './apis/productsCategories/productsCategories.module';
+import { UsersModule } from './apis/users/users.module';
 // import { Board } from './apis/boards/board.entity';
 
 @Module({
@@ -12,7 +13,7 @@ import { ProductsModule } from './apis/products/products.module';
     BoardsModule,
     ProductsModule,
     ProductsCategoriesModule,
-    // UsersModule,
+    UsersModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: 'src/commons/graphql/schema.gql',

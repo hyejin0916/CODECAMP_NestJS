@@ -58,7 +58,7 @@ export class Product {
   @JoinTable() // 중간 테이블 자동 생성
   @ManyToMany(() => ProductTag, (productTags) => productTags.products)
   @Field(() => [ProductTag])
-  productTags: ProductTag;
+  productTags: ProductTag[];
 
   // @CreateDateColumn() // 데이터 등록 시 등록시간 자동으로 추가
   // createAt: Date;

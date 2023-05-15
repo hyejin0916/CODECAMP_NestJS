@@ -1,4 +1,4 @@
-export interface IProductsTagsServiceFindByName {
+export interface IProductsTagsServiceFindByNames {
   tagNames: string[];
 }
 
