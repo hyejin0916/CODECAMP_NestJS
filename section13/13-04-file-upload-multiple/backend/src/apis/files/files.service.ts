@@ -26,9 +26,13 @@ export class FilesService {
     const results = [];
     for (let i = 0; i < waitedFiles.length; i++) {
       results[i] = new Promise((resolve, reject) => {
+        const validFilename = waitedFiles[i].filename.replace(
+          /[\x00-\x1F\x7F-\x9F]/g,
+          '',
+        );
         waitedFiles[i]
           .createReadStream()
-          .pipe(storage.file(waitedFiles[i].filename).createWriteStream())
+          .pipe(storage.file(validFilename).createWriteStream())
           .on('finish', () => resolve('성공'))
           .on('error', () => reject('실패'));
       });
