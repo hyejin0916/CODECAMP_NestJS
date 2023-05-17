@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "lithe-hallway-386900",
+  "private_key_id": "2a89f97e08ad623d7af862ecba3d2a65bf168730",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCp3NRXAiUSWdZe\nXgLGE1Wsh7WO55I5KgbGpKPwxgKXq2jqUPiRkr1tJPc7ZS5MPEbZ27+zrj/gSU92\nStoi5MlIGn28KUeAbnRApWIzT2afdSEZLk149kvztoJbgLvtJOlUhid/jRv6e91G\n1tkRqtzhOx1CYp5S1MA4OtUsHuTco79HM1+Y6qpterk+QLEqJsPOaV34eaxE02J9\ntrAfmZLpSQkbjKXRxW1Wt/rzYBF9iaQpeI6MJEnWEnCKgTiTWR6Km56HZPba16WV\nCi/+RseicVKVzm/gxuR/zXoRfeAPgUFWQFlgvk+VOpNhP8wkakFlCQauCMcH4SMv\nI2qHaDzpAgMBAAECggEACHESGHTh1MSkM7JmXuOtGVLxQfXePXsKNSsPfrLIhDMf\nlq2JfOqXAWqZ4tjHcUB5oPAb2dkqEYJzMYTMzHkkS7INV6GRjR9wJZpShAxJJFmU\n2ISFkyJiae1DEzsVm9Z+xhWYtu0TW+J1/8RDq24bZhIjBR6TkbhDCUhbOcMbSp+/\n2Jrk79xKormQOfpatP+U1IoiSe2ssGy8zA4CIDVR9alaiK5MfuzuzxQHC3HXfgZL\nhU1Rl8foBs9hGecuVldeZ5nE4YztKUd7xt+2Ry3nm6aUmZLiOaofqlJyIF7claKJ\neJWpx25V269FpjA5Yzu1S/39CFQ5VDtALhq1SqKOEQKBgQDmQ0SZfcCIfo8UPx5i\ndSn9+7lV2mYhDhTypDo8db2mhPvVv7NVnIHNenAAl3XNnyEgKG3DFtN+yuwmbWJS\nvv849v3tTyHoNJTFsZnYcd+FaaPlkDSWS5aC4qVQzpvhU6pVd2dCNjvgbiMhY3Nf\n+u/kOaR11/3zjKcH+8uquSPGfQKBgQC82UX6KJZTXxEj+LjFwhdGPuwslTyaYDYM\nb9z1Vh12aiwEHhUdLdeSBqjNrVqCwl1j42wwNy6yJlAwtCrnmKNoXowgad+mpURx\nMQ6hXMHmsBoyxGdTcrwbJz+MeARs5E8XpB+Q6PK7FCOF/4mlWMmhLpfPnM0m6y+y\n3ttLX0vf3QKBgGPWxufGnrSQK3mb5JDMPGjjvHh9OcsbT/nlO1r7sj+BabBEbn2w\nXpe5ftbC1VFSrgpDfVQZkZpoYfxHcVpvdjo83d0Hcqw8IEWXvB0dQs2WAHqJDEQe\ngiQ+IW/oJa6NmE12eE89NLkbCCBx/pSfOWS7mZN/E52GXuYXRze/DsQBAoGAW2Zx\nRuTz9L/zRMyxaQ1KRHZZyi4kmbbtEdHmSFt4gQJb8VY589hnGEbe1kULpHO7zYeZ\nqjBbCmAeuaPJjDPFCtOP0HRNiZM9b+dFZHXHZwZed6m1NJ84SZASYsMHqUhKu290\n06bbLA5QLx+BmCRD2h353cLPTAHSISlZS76As4UCgYEAh9qIsemaiGsxato8gvge\naYZ4AhDuhZ7XBglUDTz75n4ZMw3udthe65W6R6daE+RuFAtae+Ra4EgoHy/gzMim\nLOMLWivyJAiYqdieip6GBO2BP6dAclKXeJ5JJMzIf8TQYDpp2U0+MxVXrzWHBN8Y\nQ3pOUXo2P0LROl+jw6nUXLk=\n-----END PRIVATE KEY-----\n",
+  "client_email": "codecamp-hj@lithe-hallway-386900.iam.gserviceaccount.com",
+  "client_id": "115814096938240139074",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/codecamp-hj%40lithe-hallway-386900.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
