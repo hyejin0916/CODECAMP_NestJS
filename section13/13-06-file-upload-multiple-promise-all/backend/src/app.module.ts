@@ -20,6 +20,8 @@ import { FilesModule } from './apis/files/files.module';
     ProductsCategoriesModule,
     UsersModule,
     ConfigModule.forRoot(),
+    // ConfigModule.forRoot(): 환경 변수 또는 구성 설정을 로드하고 사용할 수 있도록 애플리케이션에 구성 모듈을 등록하는 역할을 한다.
+    // 이 메서드를 사용하면 환경 변수나 구성 파일에서 설정 값을 가져와 애플리케이션 전체에서 사용할 수 있게 된다.
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: 'src/commons/graphql/schema.gql',

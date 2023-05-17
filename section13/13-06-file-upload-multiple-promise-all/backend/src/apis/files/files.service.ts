@@ -36,8 +36,9 @@ export class FilesService {
             );
             el.createReadStream()
               .pipe(storage.file(validFilename).createWriteStream())
-              .on('finish', () => resolve(`${bucket}/${validFilename}`))
-              .on('error', (error) => reject(error));
+              // pipe는 Readable스트림과 Writable스트림을 연결
+              .on('finish', () => resolve(`${bucket}/${validFilename}`)) // 'finish' 이벤트
+              .on('error', (error) => reject(error)); // 'error' 이벤트
           }),
       ),
     );
