@@ -1,11 +1,8 @@
 // users.service.spec.ts
 
-import {
-  ConflictException,
-  UnprocessableEntityException,
-} from '@nestjs/common';
+import { ConflictException } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
-import { getRepositoryToken, TypeOrmModule } from '@nestjs/typeorm';
+import { getRepositoryToken } from '@nestjs/typeorm';
 import { User } from '../entities/user.entity';
 import { UsersService } from '../users.service';
 
@@ -42,7 +39,7 @@ describe('UsersService', () => {
           useClass: MockUsersRepository, // MockUsersRepository넣어줘
         },
       ],
-    }).compile();
+    }).compile(); // 최적화
 
     usersService = usersModule.get<UsersService>(UsersService);
   });
@@ -68,7 +65,8 @@ describe('UsersService', () => {
       try {
         await usersService.create({ ...myData });
       } catch (error) {
-        expect(error).toBeInstanceOf(ConflictException);
+        expect(error).toBeInstanceOf(ConflictException); // instance: 자식
+        // toBeInstanceOf: 그 함수의 자식인 에러가 떨어졌는지
         // expect(error).toBeInstanceOf(UnprocessableEntityException); // 잘 작동하는지 확인 용도
       }
     });
@@ -84,6 +82,7 @@ describe('UsersService', () => {
       const result = await usersService.create({ ...myData });
       const { password, ...rest } = result;
       expect(rest).toStrictEqual({
+        // toStrictEqual: 객체 비교
         email: 'bbb@bbb.com',
         name: '철수',
         age: 13,
